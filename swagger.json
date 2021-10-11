@@ -190,11 +190,6 @@
             "WidgetSchemaValidator": {
                 "type": "object",
                 "properties": {
-                    "number_of_parts": {
-                        "type": "integer",
-                        "description": "How many parts the widget has",
-                        "example": 35
-                    },
                     "date_updated": {
                         "type": "string",
                         "format": "date-time",
@@ -211,6 +206,11 @@
                         "type": "string",
                         "format": "date-time",
                         "description": "The time at which the widget was created in the database"
+                    },
+                    "number_of_parts": {
+                        "type": "integer",
+                        "description": "How many parts the widget has",
+                        "example": 35
                     }
                 },
                 "required": [
