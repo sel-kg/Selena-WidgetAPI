@@ -4,31 +4,23 @@ Widget API is a Python CRUD API for 'Widgets'
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install .
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install required dependencies.
 
 ```bash
-pip install foobar
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-```python
-import foobar
+To run the project from the cli run the following command 
 
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```bash
+python main.py
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+This will spin up a localhost at http://localhost:8888/
 
-Please make sure to update tests as appropriate.
+To call and interact with the API you can use Postman https://www.postman.com/downloads/
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+For information on the available calls and their schemas please refer to the swagger documentation 
+found here -> http://localhost:8888/swagger/spec.html once the server is up and running.

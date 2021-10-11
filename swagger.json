@@ -34,6 +34,46 @@
                     }
                 }
             },
+            "post": {
+                "tags": [
+                    "AWeber widgets"
+                ],
+                "summary": "Create a widget",
+                "description": "Create a new widget",
+                "requestBody": {
+                    "description": "New Widget Data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WidgetSchemaValidator"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success payload containing newly created widget information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request; Attached request body has validation errors",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "get": {
                 "tags": [
                     "AWeber Widgets"
@@ -90,46 +130,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/BadRequest"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "AWeber widgets"
-                ],
-                "summary": "Create a widget",
-                "description": "Create a new widget",
-                "requestBody": {
-                    "description": "New Widget Data",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/WidgetSchemaValidator"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Success payload containing newly created widget information",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/WidgetSchemaValidator"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request; Attached request body has validation errors",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BadRequestSchema"
                                 }
                             }
                         }
@@ -200,17 +200,17 @@
                         "format": "date-time",
                         "description": "The time at which the widget was updated in the database"
                     },
-                    "date_created": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "The time at which the widget was created in the database"
-                    },
                     "name": {
                         "type": "string",
                         "minLength": 1,
                         "maxLength": 64,
                         "description": "Name of the widget",
                         "example": "The coolest widget"
+                    },
+                    "date_created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time at which the widget was created in the database"
                     }
                 },
                 "required": [
