@@ -5,7 +5,6 @@ from widgets import Widget
 from utils import SQLiteConnection, WidgetSchemaValidator
 from init_swagger import generate_swagger_file
 import swagger_ui
-from swagger_ui import api_doc
 
 SWAGGER_API_OUTPUT_FILE = "./swagger.json"
 
@@ -217,8 +216,7 @@ def make_app():
     # Generate a fresh Swagger file
     generate_swagger_file(handlers=handlers, file_location=SWAGGER_API_OUTPUT_FILE)
 
-    # Start the Swagger UI. Automatically generated swagger.json can also
-    # be served using a separate Swagger-service.
+    # Start the Swagger UI. Automatically generated swagger.json
     swagger_ui.api_doc(
         app,
         config_path=SWAGGER_API_OUTPUT_FILE,

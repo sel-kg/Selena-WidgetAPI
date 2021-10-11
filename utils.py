@@ -1,5 +1,5 @@
 import sqlite3
-from marshmallow import Schema, fields, ValidationError, validate
+from marshmallow import Schema, fields, validate
 
 
 class WidgetSchemaValidator(Schema):

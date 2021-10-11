@@ -24,9 +24,7 @@ def generate_swagger_file(handlers, file_location):
             {"url": "http://localhost:8888/", "description": "Local environment", },
         ],
     )
-    # Looping through all the handlers and trying to register them.
-    # Handlers without docstring will raise errors. That's why we
-    # are catching them silently.
+
     for handler in handlers:
         try:
             spec.path(urlspec=handler)
