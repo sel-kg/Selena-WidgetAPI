@@ -1,0 +1,223 @@
+{
+    "info": {
+        "description": "Documentation for the AWeber Widget API",
+        "title": "AWeber Widget API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8888/",
+            "description": "Local environment"
+        }
+    ],
+    "paths": {
+        "/widget": {
+            "delete": {
+                "tags": [
+                    "AWeber Widgets"
+                ],
+                "summary": "Delete widget by name and number of parts",
+                "description": "Delete widget by name and number of parts",
+                "responses": {
+                    "200": {
+                        "description": "Widget deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "AWeber Widgets"
+                ],
+                "summary": "Get widgets",
+                "description": "Get all the widgets",
+                "responses": {
+                    "200": {
+                        "description": "List of widgets",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "AWeber Widgets"
+                ],
+                "summary": "Update a widget or create new one",
+                "description": "Update a widget if exists or creates a new one",
+                "requestBody": {
+                    "description": "Update Widget",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WidgetSchemaValidator"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success payload containing updated widget information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request; Check `errors` for any validation errors",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequest"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "AWeber widgets"
+                ],
+                "summary": "Create a widget",
+                "description": "Create a new widget",
+                "requestBody": {
+                    "description": "New Widget Data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WidgetSchemaValidator"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success payload containing newly created widget information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request; Attached request body has validation errors",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BadRequestSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/widget/{name}": {
+            "delete": {
+                "tags": [
+                    "AWeber Widgets"
+                ],
+                "summary": "Delete widget by name",
+                "description": "Delete widget by name",
+                "responses": {
+                    "200": {
+                        "description": "Widget deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "AWeber Widgets"
+                ],
+                "summary": "Get widget by name",
+                "description": "Get widgets by name",
+                "responses": {
+                    "200": {
+                        "description": "List of widgets",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WidgetSchemaValidator"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "openapi": "3.0.3",
+    "components": {
+        "schemas": {
+            "WidgetSchemaValidator": {
+                "type": "object",
+                "properties": {
+                    "number_of_parts": {
+                        "type": "integer",
+                        "description": "How many parts the widget has",
+                        "example": 35
+                    },
+                    "date_updated": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time at which the widget was updated in the database"
+                    },
+                    "date_created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time at which the widget was created in the database"
+                    },
+                    "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Name of the widget",
+                        "example": "The coolest widget"
+                    }
+                },
+                "required": [
+                    "name",
+                    "number_of_parts"
+                ]
+            }
+        }
+    }
+}
